@@ -1,5 +1,4 @@
-const ParkingLot = require('../lib/ParkingLot');
-const Car = require('../lib/Car');
+const Obj = require('../lib/Obj');
 
 const chai = require('chai');
 chai.should();
