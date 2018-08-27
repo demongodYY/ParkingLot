@@ -11,7 +11,7 @@
     "lint": "eslint --fix lib/ test/",
     "test": "mocha test/**/*.spec.js --reporter dot --exit",
     "test-w": "mocha test/**/*.spec.js --reporter dot -w",
-    "precommit": "npm run lint"
+    "precommit": "npm test && npm run lint && git add ."
   },
   "keywords": [],
   "author": "",
