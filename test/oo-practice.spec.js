@@ -18,9 +18,8 @@ describe('oo-practice', () => {
             parkinglot.capacity.should.be.eq(30);
         });
         it('Should have car, and car could set license number', () => {
-            const car = new Car('XA1A123');
+            const car = new Car();
             car.constructor.should.be.eq(Car);
-            car.license_num.should.be.eq('XA1A123');
         });
     });
 });
