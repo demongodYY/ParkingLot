@@ -21,5 +21,12 @@ describe('oo-practice', () => {
             const car = new Car();
             car.constructor.should.be.eq(Car);
         });
+        it('The car should be parking into parkinglot', () => {
+            const parkinglot = new Parkinglot(1);
+            const car = new Car();
+            parkinglot.parking(car).should.be.eq(true)
+            parkinglot.available.shoule.eq(parkinglot.capacity - 1)
+
+        })
     });
 });
