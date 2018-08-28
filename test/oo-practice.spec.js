@@ -25,8 +25,8 @@ describe('oo-practice', () => {
             const parkinglot = new Parkinglot(1);
             const car = new Car();
             parkinglot.parking(car).should.be.eq(true)
-            parkinglot.available.shoule.eq(parkinglot.capacity - 1)
-
+            parkinglot.capacity.should.be.eq(1)
+            parkinglot.available.shoule.be.eq(0)
         })
     });
 });
