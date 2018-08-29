@@ -46,6 +46,13 @@ describe('oo-practice', () => {
           const car1 = new Car();
           parkinglot.parking(car1);
           (() => parkinglot.parking(car1)).should.throw();
+        });
+        it('The car should be pick up', () => {
+          const parkinglot = new Parkinglot(5);
+          const car1 = new Car();
+          parkinglot.parking(car1);
+          parkinglot.pickUp(car1).should.be.eq(true);
+          parkinglot.available.should.be.eq(5);
         })
     });
 });
