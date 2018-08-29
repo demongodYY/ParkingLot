@@ -28,12 +28,18 @@ describe('oo-practice', () => {
             car.constructor.should.be.eq(Car);
         });
         it('The car should be parking into parkinglot', () => {
-            const parkinglot = new Parkinglot(1);
-            const car = new Car();
-            parkinglot.parking(car).should.be.eq(true)
-            parkinglot.capacity.should.be.eq(1)
-            parkinglot.available.should.be.eq(0)
-            parkinglot.cars.length.should.be.eq(1)
+            const parkinglot = new Parkinglot(3);
+            const car1 = new Car();
+            const car2 = new Car();
+            parkinglot.parking(car1).should.be.eq(true)
+            parkinglot.capacity.should.be.eq(3)
+            parkinglot.available.should.be.eq(2)
+            parkinglot.cars[0].should.be.eq(car1)
+            parkinglot.parking(car2).should.be.eq(true)
+            parkinglot.capacity.should.be.eq(3)
+            parkinglot.available.should.be.eq(1)
+            parkinglot.cars[1].should.be.eq(car2)
+
         })
     });
 });
