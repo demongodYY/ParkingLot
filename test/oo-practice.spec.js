@@ -40,6 +40,12 @@ describe('oo-practice', () => {
             parkinglot.available.should.be.eq(1)
             parkinglot.cars[1].should.be.eq(car2)
 
+        });
+        it('The same car should not be parking twice', () => {
+          const parkinglot = new Parkinglot(5);
+          const car1 = new Car();
+          parkinglot.parking(car1);
+          (() => parkinglot.parking(car1)).should.throw();
         })
     });
 });
