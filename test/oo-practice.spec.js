@@ -42,17 +42,22 @@ describe('oo-practice', () => {
 
         });
         it('The same car should not be parking twice', () => {
-          const parkinglot = new Parkinglot(5);
-          const car1 = new Car();
-          parkinglot.parking(car1);
-          (() => parkinglot.parking(car1)).should.throw();
+            const parkinglot = new Parkinglot(5);
+            const car1 = new Car();
+            parkinglot.parking(car1);
+            (() => parkinglot.parking(car1)).should.throw();
         });
         it('The car should be pick up', () => {
-          const parkinglot = new Parkinglot(5);
-          const car1 = new Car();
-          parkinglot.parking(car1);
-          parkinglot.pickUp(car1).should.be.eq(true);
-          parkinglot.available.should.be.eq(5);
-        })
+            const parkinglot = new Parkinglot(5);
+            const car1 = new Car();
+            parkinglot.parking(car1);
+            parkinglot.pickUp(car1).should.be.eq(true);
+            parkinglot.available.should.be.eq(5);
+        });
+        it('It should throw error when try to pick up a car not in parkinglot', () => {
+            const parkinglot = new Parkinglot(5);
+            const car1 = new Car();
+            (() => parkinglot.pickUp(car1)).should.throw();
+        });
     });
 });
