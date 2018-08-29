@@ -32,11 +32,9 @@ describe('oo-practice', () => {
             const car1 = new Car();
             const car2 = new Car();
             parkinglot.parking(car1).should.be.eq(true)
-            parkinglot.capacity.should.be.eq(3)
             parkinglot.available.should.be.eq(2)
             parkinglot.cars[0].should.be.eq(car1)
             parkinglot.parking(car2).should.be.eq(true)
-            parkinglot.capacity.should.be.eq(3)
             parkinglot.available.should.be.eq(1)
             parkinglot.cars[1].should.be.eq(car2)
 
