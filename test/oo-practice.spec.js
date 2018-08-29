@@ -33,10 +33,10 @@ describe('oo-practice', () => {
             const car2 = new Car();
             parkinglot.parking(car1).should.be.eq(true)
             parkinglot.available.should.be.eq(2)
-            parkinglot.cars[0].should.be.eq(car1)
+            parkinglot.checkCar(car1).should.be.not.eq(-1)
             parkinglot.parking(car2).should.be.eq(true)
             parkinglot.available.should.be.eq(1)
-            parkinglot.cars[1].should.be.eq(car2)
+            parkinglot.checkCar(car2).should.be.not.eq(-1)
 
         });
         it('The same car should not be parking twice', () => {
