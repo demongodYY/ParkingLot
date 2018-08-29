@@ -17,7 +17,10 @@ describe('oo-practice', () => {
             parkinglot.constructor.should.be.eq(Parkinglot);
             parkinglot.capacity.should.be.eq(30);
         });
-        it('Should have car, and car could set license number', () => {
+        it('The capacity should be positive integer', () => {
+            (() => new Parkinglot(0)).should.throw();
+        })
+        it('Should have car', () => {
             const car = new Car();
             car.constructor.should.be.eq(Car);
         });
