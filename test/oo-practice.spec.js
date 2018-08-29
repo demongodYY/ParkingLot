@@ -27,6 +27,7 @@ describe('oo-practice', () => {
             parkinglot.parking(car).should.be.eq(true)
             parkinglot.capacity.should.be.eq(1)
             parkinglot.available.should.be.eq(0)
+            parkinglot.cars.length.should.be.eq(1)
         })
     });
 });
