@@ -56,6 +56,7 @@ describe('oo-practice', () => {
             const parkinglot = new Parkinglot(5);
             const car1 = new Car();
             (() => parkinglot.pickUp(car1)).should.throw();
+            parkinglot.checkCar(car1).should.be.eq(-1)
         });
     });
 });
