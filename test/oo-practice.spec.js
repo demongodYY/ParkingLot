@@ -19,6 +19,9 @@ describe('oo-practice', () => {
         });
         it('The capacity should be positive integer', () => {
             (() => new Parkinglot(0)).should.throw();
+            (() => new Parkinglot(-1)).should.throw();
+            (() => new Parkinglot(1.5)).should.throw();
+            (() => new Parkinglot("bad")).should.throw();
         })
         it('Should have car', () => {
             const car = new Car();
