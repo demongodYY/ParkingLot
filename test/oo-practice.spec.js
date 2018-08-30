@@ -76,6 +76,17 @@ describe('oo-practice', () => {
             (() => parkingBoy.setParkinglot(true)).should.throw();
             (() => parkingBoy.setParkinglot(1.1)).should.throw();
             (() => parkingBoy.setParkinglot([new Parkinglot(1)])).should.throw();
+        });
+        it('ParkingBoy should parking and pick up', () => {
+            const parkingBoy = new ParkingBoy();
+            const parkinglot = new Parkinglot(10);
+            const car1 = new Car();
+            const car2 = new Car();
+            parkingBoy.setParkinglot(parkinglot);
+            parkingBoy.getParkinglot().parking(car1).should.be.eq(true);
+            parkingBoy.getParkinglot().parking(car2).should.be.eq(true);
+            parkingBoy.getParkinglot().pickUp(car1).should.be.eq(true);
+            parkingBoy.getParkinglot().pickUp(car2).should.be.eq(true);
         })
     });
 });
