@@ -68,6 +68,14 @@ describe('oo-practice', () => {
             const parkinglot = new Parkinglot(10);
             parkingBoy.setParkinglot(parkinglot).should.be.eq(true);
             parkingBoy.getParkinglot().should.be.eq(parkinglot);
+        });
+        it('ParkingBoy should only manage parkinglot', () => {
+            const parkingBoy = new ParkingBoy();
+            (() => parkingBoy.setParkinglot(1)).should.throw();
+            (() => parkingBoy.setParkinglot('parkinglot')).should.throw();
+            (() => parkingBoy.setParkinglot(true)).should.throw();
+            (() => parkingBoy.setParkinglot(1.1)).should.throw();
+            (() => parkingBoy.setParkinglot([new Parkinglot(1)])).should.throw();
         })
     });
 });
