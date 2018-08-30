@@ -62,6 +62,12 @@ describe('oo-practice', () => {
         it('Should have ParkingBoy', () => {
             const parkingBoy = new ParkingBoy();
             parkingBoy.constructor.should.be.eq(ParkingBoy);
+        });
+        it('ParkingBoy should manage Parkinglot', () => {
+            const parkingBoy = new ParkingBoy();
+            const parkinglot = new Parkinglot(10);
+            parkingBoy.setParkinglot(parkinglot).should.be.eq(true);
+            parkingBoy.getParkinglot().should.be.eq(parkinglot);
         })
     });
 });
