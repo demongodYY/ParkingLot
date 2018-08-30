@@ -58,5 +58,9 @@ describe('oo-practice', () => {
             (() => parkinglot.pickUp(car1)).should.throw();
             parkinglot.checkCar(car1).should.be.eq(-1)
         });
+        it('Should have ParkingBoy', () => {
+            const parkingBoy = new ParkingBoy();
+            parkingBoy.constructor.should.be.eq(ParkingBoy);
+        })
     });
 });
