@@ -6,7 +6,7 @@ chai.should();
 describe('ParkingLot Project', () => {
   context('Parking Lot test',() => {
     it('there is a parking lot',()=> {
-      const parkingLot = new ParkingLot();
+      const parkingLot = new ParkingLot(10);
       parkingLot.constructor.should.be.eq(ParkingLot);
     });
     it('there should be a car', () => {
@@ -17,12 +17,39 @@ describe('ParkingLot Project', () => {
       const parkingLot1 = new ParkingLot(30);
       parkingLot1.capacity.should.eq(30);
     });
-    it('capacity should not eq negtive number ', ()=>{
-      (() => new ParkingLot(-1)).should.throw();
+    it('capacity should be positive integer number ', ()=>{
+     (() => new ParkingLot(-1)).should.throw();
      (() => new ParkingLot(0.1)).should.throw();
      (() => new ParkingLot(0)).should.throw();
      (() => new ParkingLot("test")).should.throw();
     });
-
+    it('ParkingLot can park a car', () => {
+      const car = new Car();
+      const parkingLot = new ParkingLot(10);
+      parkingLot.park(car);
+      parkingLot.slots.should.be.eq(9);
+    });
+    it('A same car cannot be parked again',() => {
+      const car1 = new Car();
+      const parkingLot = new ParkingLot(10);
+      parkingLot.park(car1);
+      parkingLot.slots.should.be.eq(9);
+      (parkingLot.park(car1)).should.throw();
+    })
+  });
+  it('a car parked in ParkingLot can be picked up from the ParkingLot. After picked up, the car should not be find in the ParkingLot', () => {
+    const car = new Car();
+    const parkingLot = new ParkingLot(10);
+    parkingLot.park(car);
+    parkingLot.slots.should.be.eq(9);
+    parkingLot.pickup(car);
+    parkingLot.slots.should.be.eq(10);
+    parkingLot.cars.find((car_in_cars)=>{return car_in_cars === car}).should.be.eq(false);
+  });
+  it('a car cannot be picked up if the car did not park in ParkingLot', ()=> {
+    const car = new Car();
+    const parkingLot = new ParkingLot(10);
+    parkingLot.cars.find((car_in_cars) => {return car_in_cars === car}).should.be.eq(false);
+    (parkingLot.pickup(car)).should.throw();
   });
 })
