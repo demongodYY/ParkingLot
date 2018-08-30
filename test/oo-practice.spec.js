@@ -1,6 +1,7 @@
 const chai = require('chai');
 const Parkinglot = require('../lib/Parkinglot');
 const Car = require('../lib/Car');
+const ParkingBoy = require('../lib/ParkingBoy')
 
 chai.should();
 
