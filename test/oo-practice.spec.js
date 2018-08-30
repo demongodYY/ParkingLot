@@ -85,8 +85,10 @@ describe('oo-practice', () => {
             parkingBoy.setParkinglot(parkinglot);
             parkingBoy.getParkinglot().parking(car1).should.be.eq(true);
             parkingBoy.getParkinglot().parking(car2).should.be.eq(true);
+            parkingBoy.getParkinglot().available.should.be.eq(8);
             parkingBoy.getParkinglot().pickUp(car1).should.be.eq(true);
             parkingBoy.getParkinglot().pickUp(car2).should.be.eq(true);
+            parkingBoy.getParkinglot().available.should.be.eq(10);
         })
     });
 });
