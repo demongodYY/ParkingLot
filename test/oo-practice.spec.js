@@ -4,7 +4,7 @@ const chai = require('chai');
 chai.should();
 
 describe('ParkingLot Project', () => {
-  context('Parking Lot test',() => {
+  context('First Part',() => {
     it('there is a parking lot',()=> {
       const parkingLot = new ParkingLot(10);
       parkingLot.constructor.should.be.eq(ParkingLot);
@@ -34,22 +34,20 @@ describe('ParkingLot Project', () => {
       const parkingLot = new ParkingLot(10);
       parkingLot.park(car1);
       parkingLot.slots.should.be.eq(9);
-      (parkingLot.park(car1)).should.throw();
+      (() => parkingLot.park(car1)).should.throw();
     })
   });
-  it('a car parked in ParkingLot can be picked up from the ParkingLot. After picked up, the car should not be find in the ParkingLot', () => {
-    const car = new Car();
-    const parkingLot = new ParkingLot(10);
-    parkingLot.park(car);
-    parkingLot.slots.should.be.eq(9);
-    parkingLot.pickup(car);
-    parkingLot.slots.should.be.eq(10);
-    parkingLot.cars.find((car_in_cars)=>{return car_in_cars === car}).should.be.eq(false);
-  });
-  it('a car cannot be picked up if the car did not park in ParkingLot', ()=> {
-    const car = new Car();
-    const parkingLot = new ParkingLot(10);
-    parkingLot.cars.find((car_in_cars) => {return car_in_cars === car}).should.be.eq(false);
-    (parkingLot.pickup(car)).should.throw();
-  });
+    it('a car parked in ParkingLot can be picked up from the ParkingLot.', () => {
+      const car = new Car();
+      const parkingLot = new ParkingLot(10);
+      parkingLot.park(car);
+      parkingLot.slots.should.be.eq(9);
+      parkingLot.pickup(car);
+      parkingLot.slots.should.be.eq(10);
+    });
+    it('a car cannot be picked up if the car did not park in ParkingLot', ()=> {
+      const car = new Car();
+      const parkingLot = new ParkingLot(10);
+      (() => parkingLot.pickup(car)).should.throw();
+    });
 })
