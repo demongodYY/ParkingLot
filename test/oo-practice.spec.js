@@ -83,12 +83,10 @@ describe('oo-practice', () => {
             const car1 = new Car();
             const car2 = new Car();
             parkingBoy.setParkinglot(parkinglot);
-            parkingBoy.getParkinglot().parking(car1).should.be.eq(true);
-            parkingBoy.getParkinglot().parking(car2).should.be.eq(true);
-            parkingBoy.getParkinglot().available.should.be.eq(8);
-            parkingBoy.getParkinglot().pickUp(car1).should.be.eq(true);
-            parkingBoy.getParkinglot().pickUp(car2).should.be.eq(true);
-            parkingBoy.getParkinglot().available.should.be.eq(10);
+            parkingBoy.parking(car1).should.be.eq(true);
+            parkingBoy.parking(car2).should.be.eq(true);
+            parkingBoy.pickUp(car1).should.be.eq(true);
+            parkingBoy.pickUp(car2).should.be.eq(true);
         })
     });
 });
