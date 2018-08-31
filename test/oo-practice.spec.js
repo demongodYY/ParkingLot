@@ -87,6 +87,18 @@ describe('oo-practice', () => {
             parkingBoy.parking(car2).should.be.eq(true);
             parkingBoy.pickUp(car1).should.be.eq(true);
             parkingBoy.pickUp(car2).should.be.eq(true);
+            
+        });
+        it('ParkingBoy should only parking and pick up car', () => {
+            const parkingBoy = new ParkingBoy();
+            const parkinglot = new Parkinglot(20);
+            parkingBoy.setParkinglot(parkinglot);
+            (() => parkingBoy.parking(1)).should.throw();
+            (() => parkingBoy.pickUp(1)).should.throw();
+            (() => parkingBoy.parking('car')).should.throw();
+            (() => parkingBoy.pickUp('car')).should.throw();
+            
         })
+
     });
 });
