@@ -1,5 +1,6 @@
 const ParkingLot = require('../lib/ParkingLot');
 const Car = require('../lib/Car');
+const ParkingBoy = require('../lib/ParkingBoy')
 const chai = require('chai');
 chai.should();
 
@@ -49,5 +50,9 @@ describe('ParkingLot Project', () => {
       const car = new Car();
       const parkingLot = new ParkingLot(10);
       (() => parkingLot.pickup(car)).should.throw();
+    });
+    it('There is a ParkingBoy', () => {
+      const parkingBoy = new ParkingBoy();
+      parkingBoy.constructor.should.be.eq(ParkingBoy);
     });
 })
