@@ -55,4 +55,10 @@ describe('ParkingLot Project', () => {
       const parkingBoy = new ParkingBoy();
       parkingBoy.constructor.should.be.eq(ParkingBoy);
     });
+    it('ParkingBoy can have a parking lot to manage', () => {
+      const parkingBoy = new ParkingBoy();
+      const parkingLot = new ParkingLot(10);
+      parkingBoy.setParkingLot(parkingLot);
+      parkingBoy.getParkingLot().should.be.eq(parkingLot);
+    })
 })
