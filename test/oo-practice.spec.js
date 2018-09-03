@@ -78,5 +78,14 @@ describe('ParkingLot Project', () => {
       parkingBoy.park(car);
       parkingLot.slots.should.be.eq(9);
     });
+    it('parkingBoy can pickup a car from parking lot',() => {
+      const parkingBoy = new ParkingBoy();
+      const parkingLot = new ParkingLot(10);
+      const car = new Car();
+      parkingBoy.setParkingLot(parkingLot);
+      parkingBoy.park(car);
+      parkingBoy.pickup(car);
+      parkingBoy.getParkingLot().slots.should.be.eq(10);
+    });
   })
 })
