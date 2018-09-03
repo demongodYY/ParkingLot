@@ -103,10 +103,27 @@ describe('oo-practice', () => {
       const boy = new Boy();
       const lot = new Lot(3);
       boy.addLot(lot); // 为小哥添加车场
-      boy.lots.length.should.be.gt(0); // 小哥手下至少有1个停车场
+      boy.lots.length.should.be.eq(1); // 添加车场是否成功
       boy.lots.forEach(element => {
         element.constructor.should.be.eq(Lot) // 每个停车场都是Lot类
       });
+    });
+    // 停车哥可以停车
+    it('boy can park a car', () => {
+      const lot = new Lot(1);
+      const car = new Car(123);
+      const boy = new Boy();
+      boy.addLot(lot);
+      boy.lots.length.should.be.eq(1);
+      boy.park(lot, car); // 此处为车场添加id属性，便于小哥将来车停到指定车场
+      lot.cars.indexOf(car.id).should.be.not.eq(-1)// 车被停入车场
+      lot.available.should.be.eq(0) // 车场车位减1
+      const car2 = new Car(234);
+      (() => boy.park(lot, car2)).should.throw(); // 车场有车位才能停车
+    });
+    // 停车哥可以取车
+    it('boy can get a car', () => {
+
     });
   })
 })
