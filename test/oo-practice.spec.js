@@ -51,6 +51,7 @@ describe('ParkingLot Project', () => {
       const parkingLot = new ParkingLot(10);
       (() => parkingLot.pickup(car)).should.throw();
     });
+    context('Second Part',() => {
     it('There is a ParkingBoy', () => {
       const parkingBoy = new ParkingBoy();
       parkingBoy.constructor.should.be.eq(ParkingBoy);
@@ -60,5 +61,22 @@ describe('ParkingLot Project', () => {
       const parkingLot = new ParkingLot(10);
       parkingBoy.setParkingLot(parkingLot);
       parkingBoy.getParkingLot().should.be.eq(parkingLot);
-    })
+    });
+    it('ParkingBoy can only manage one parking lot',() => {
+      const parkingBoy = new ParkingBoy();
+      const parkingLot1 = new ParkingLot(10);
+      const parkingLot2 = new ParkingLot(10);
+      parkingBoy.setParkingLot(parkingLot1);
+      (() => parkingBoy.setParkingLot(parkingLot2)).should.throw();
+      parkingBoy.getParkingLot().should.be.eq(parkingLot1);
+    });
+    it('ParkingBoy can park a car into a parking lot', () => {
+      const parkingBoy = new ParkingBoy();
+      const parkingLot = new ParkingLot(10);
+      const car = new Car();
+      parkingBoy.setParkingLot(parkingLot);
+      parkingBoy.park(car);
+      parkingLot.slots.should.be.eq(9);
+    });
+  })
 })
