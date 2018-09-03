@@ -90,4 +90,13 @@ describe('oo-practice', () => {
       (() => lot.get(car)).should.throw(); // 同一台车取第二次时抛出错误
     });
   });
+
+  // 停车哥
+  context(('parking boy'), () => {
+    // 定义停车哥
+    it('this is a parking boy', () => {
+      const boy = new Boy();
+      boy.constructor.should.be.eq(Boy) // BOY
+    });
+  })
 })
