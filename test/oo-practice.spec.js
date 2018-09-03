@@ -98,5 +98,15 @@ describe('oo-practice', () => {
       const boy = new Boy();
       boy.constructor.should.be.eq(Boy) // BOY
     });
+    // 停车哥管理停车场
+    it('boy manages a park', () => {
+      const boy = new Boy();
+      const lot = new Lot(3);
+      boy.addLot(lot); // 为小哥添加车场
+      boy.lots.length.should.be.gt(0); // 小哥手下至少有1个停车场
+      boy.lots.forEach(element => {
+        element.constructor.should.be.eq(Lot) // 每个停车场都是Lot类
+      });
+    });
   })
 })
