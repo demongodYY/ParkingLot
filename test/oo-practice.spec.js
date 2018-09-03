@@ -123,7 +123,15 @@ describe('oo-practice', () => {
     });
     // 停车哥可以取车
     it('boy can get a car', () => {
-
+      const lot = new Lot(2);
+      const car = new Car(123);
+      const boy = new Boy();
+      boy.addLot(lot);
+      (()=>boy.get(lot, car)).should.throw(); // 车场没有该号牌时抛出错误
+      boy.park(lot, car);
+      boy.get(lot, car);
+      expect(lot.cars.find(e=>e==car.id)).to.be.an("undefined"); // 取车后号牌不存在车场内
+      lot.available.should.be.eq(2); // 车场车位加1
     });
   })
 })
