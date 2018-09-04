@@ -62,6 +62,43 @@ describe('oo-practice', () => {
         it('Should have ParkingBoy', () => {
             const parkingBoy = new ParkingBoy();
             parkingBoy.constructor.should.be.eq(ParkingBoy);
+        });
+        it('ParkingBoy should manage Parkinglot', () => {
+            const parkingBoy = new ParkingBoy();
+            const parkinglot = new Parkinglot(10);
+            parkingBoy.setParkinglot(parkinglot).should.be.eq(true);
+            parkingBoy.getParkinglot().should.be.eq(parkinglot);
+        });
+        it('ParkingBoy should only manage parkinglot', () => {
+            const parkingBoy = new ParkingBoy();
+            (() => parkingBoy.setParkinglot(1)).should.throw();
+            (() => parkingBoy.setParkinglot('parkinglot')).should.throw();
+            (() => parkingBoy.setParkinglot(true)).should.throw();
+            (() => parkingBoy.setParkinglot(1.1)).should.throw();
+            (() => parkingBoy.setParkinglot([new Parkinglot(1)])).should.throw();
+        });
+        it('ParkingBoy should parking and pick up', () => {
+            const parkingBoy = new ParkingBoy();
+            const parkinglot = new Parkinglot(10);
+            const car1 = new Car();
+            const car2 = new Car();
+            parkingBoy.setParkinglot(parkinglot);
+            parkingBoy.parking(car1).should.be.eq(true);
+            parkingBoy.parking(car2).should.be.eq(true);
+            parkingBoy.pickUp(car1).should.be.eq(true);
+            parkingBoy.pickUp(car2).should.be.eq(true);
+            
+        });
+        it('ParkingBoy should only parking and pick up car', () => {
+            const parkingBoy = new ParkingBoy();
+            const parkinglot = new Parkinglot(20);
+            parkingBoy.setParkinglot(parkinglot);
+            (() => parkingBoy.parking(1)).should.throw();
+            (() => parkingBoy.pickUp(1)).should.throw();
+            (() => parkingBoy.parking('car')).should.throw();
+            (() => parkingBoy.pickUp('car')).should.throw();
+            
         })
+
     });
 });
