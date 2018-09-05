@@ -150,7 +150,20 @@ describe('oo-practice', () => {
     
     // 小哥停车是随便找个有空位的车场
     it('park in any lot when it is available', ()=>{
-
+      const boy = new Boy();
+      const lot1 = new Lot(1, 1002);
+      const lot2 = new Lot(1, 1003);
+      const car1 = new Car(345);
+      const car2 = new Car(666);
+      boy.addLot(lot1);
+      boy.addLot(lot2);
+      boy.randomSelection(boy).constructor.should.be.eq(Lot); // 返回任意一个有空位的车场
+      const selectedLot1 = boy.randomSelection(boy);
+      boy.park(selectedLot1, car1);
+      const selectedLot2 = boy.randomSelection(boy);
+      selectedLot2.id.should.not.be.eq(selectedLot1.id); // 两个车场都只有一个空位，所以第二次选择的车场应该和第一次不同
+      boy.park(selectedLot2, car2);
+      (()=>{boy.randomSelection(boy)}).should.throw() // 车场全满抛出错误
     });
   })
 })
