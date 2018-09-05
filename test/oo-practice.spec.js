@@ -133,5 +133,24 @@ describe('oo-practice', () => {
       expect(lot.cars.find(e=>e==car.id)).to.be.an("undefined"); // 取车后号牌不存在车场内
       lot.available.should.be.eq(2); // 车场车位加1
     });
+  });
+
+  // 停车哥花式停车
+  context(('managing multi lots'), ()=>{
+    // 小哥手下掌管多个车场
+    it('boy can park multi lots', ()=>{
+      const boy = new Boy();
+      const lot1 = new Lot(3, 1002);
+      const lot2 = new Lot(5, 1003);
+      expect(boy.addLot).to.be.a('function'); // 小哥可以增加管理数量
+      boy.addLot(lot1);
+      boy.addLot(lot2);
+      boy.lots.length.should.be.eq(2);
+    });
+    
+    // 小哥停车是随便找个有空位的车场
+    it('park in any lot when it is available', ()=>{
+
+    });
   })
 })
