@@ -104,6 +104,20 @@ describe('oo-practice', () => {
             (() => parkingBoy.parking('car')).should.throw();
             (() => parkingBoy.pickUp('car')).should.throw();
         });
+        it('ParkingBoy should parking and most seat parkinglot', () => {
+            const parkingBoy = new ParkingBoy();
+            const parkinglot_A = new Parkinglot(5);
+            const parkinglot_B = new Parkinglot(6);
+            const parkinglots = [parkinglot_A, parkinglot_B];
+            const car1 = new Car();
+            const car2 = new Car();
+            parkingBoy.setParkinglots(parkinglots);
+            parkingBoy.parkingByMax(car1).should.be.eq(true);
+            parkinglot_B.available.should.be.eq(5);
+            parkingBoy.parkingByMax(car2).should.be.eq(true);
+            parkinglot_A.available.should.be.eq(4);
+            
+        });
 
     });
 });
