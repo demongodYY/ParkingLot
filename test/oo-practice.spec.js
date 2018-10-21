@@ -97,7 +97,7 @@ describe('oo-practice', () => {
         it('ParkingBoy should only parking and pick up car', () => {
             const parkingBoy = new ParkingBoy();
             const parkinglot = new Parkinglot(20);
-            const parkinglots = [parkinglot]
+            const parkinglots = [parkinglot];
             parkingBoy.setParkinglots(parkinglots);
             (() => parkingBoy.parking(1)).should.throw();
             (() => parkingBoy.pickUp(1)).should.throw();
