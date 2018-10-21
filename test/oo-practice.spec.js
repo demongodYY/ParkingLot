@@ -1,7 +1,7 @@
 const chai = require('chai');
 const Parkinglot = require('../lib/Parkinglot');
 const Car = require('../lib/Car');
-const ParkingBoy = require('../lib/ParkingBoy')
+const ParkingBoy = require('../lib/ParkingBoy');
 
 chai.should();
 
@@ -22,8 +22,8 @@ describe('oo-practice', () => {
             (() => new Parkinglot(0)).should.throw();
             (() => new Parkinglot(-1)).should.throw();
             (() => new Parkinglot(1.5)).should.throw();
-            (() => new Parkinglot("bad")).should.throw();
-        })
+            (() => new Parkinglot('bad')).should.throw();
+        });
         it('Should have car', () => {
             const car = new Car();
             car.constructor.should.be.eq(Car);
@@ -32,12 +32,12 @@ describe('oo-practice', () => {
             const parkinglot = new Parkinglot(3);
             const car1 = new Car();
             const car2 = new Car();
-            parkinglot.parking(car1).should.be.eq(true)
-            parkinglot.available.should.be.eq(2)
-            parkinglot.checkCar(car1).should.be.not.eq(-1)
-            parkinglot.parking(car2).should.be.eq(true)
-            parkinglot.available.should.be.eq(1)
-            parkinglot.checkCar(car2).should.be.not.eq(-1)
+            parkinglot.parking(car1).should.be.eq(true);
+            parkinglot.available.should.be.eq(2);
+            parkinglot.checkCar(car1).should.be.not.eq(-1);
+            parkinglot.parking(car2).should.be.eq(true);
+            parkinglot.available.should.be.eq(1);
+            parkinglot.checkCar(car2).should.be.not.eq(-1);
 
         });
         it('The same car should not be parking twice', () => {
@@ -57,32 +57,36 @@ describe('oo-practice', () => {
             const parkinglot = new Parkinglot(5);
             const car1 = new Car();
             (() => parkinglot.pickUp(car1)).should.throw();
-            parkinglot.checkCar(car1).should.be.eq(-1)
+            parkinglot.checkCar(car1).should.be.eq(-1);
         });
         it('Should have ParkingBoy', () => {
             const parkingBoy = new ParkingBoy();
             parkingBoy.constructor.should.be.eq(ParkingBoy);
         });
-        it('ParkingBoy should manage Parkinglot', () => {
+        it('ParkingBoy should manage Parkinglots', () => {
             const parkingBoy = new ParkingBoy();
-            const parkinglot = new Parkinglot(10);
-            parkingBoy.setParkinglot(parkinglot).should.be.eq(true);
-            parkingBoy.getParkinglot().should.be.eq(parkinglot);
+            const parkinglot_A = new Parkinglot(10);
+            const parkinglot_B = new Parkinglot(15);
+            const parkinglot_C = new Parkinglot(100);
+            var parkingLots = [parkinglot_A, parkinglot_B, parkinglot_C];
+            parkingBoy.setParkinglots(parkingLots);
+            parkingBoy.getParkinglots().should.be.eq(parkingLots);
         });
-        it('ParkingBoy should only manage parkinglot', () => {
+        it('ParkingBoy should only manage parkinglots', () => {
             const parkingBoy = new ParkingBoy();
-            (() => parkingBoy.setParkinglot(1)).should.throw();
-            (() => parkingBoy.setParkinglot('parkinglot')).should.throw();
-            (() => parkingBoy.setParkinglot(true)).should.throw();
-            (() => parkingBoy.setParkinglot(1.1)).should.throw();
-            (() => parkingBoy.setParkinglot([new Parkinglot(1)])).should.throw();
+            (() => parkingBoy.setParkinglots(1)).should.throw();
+            (() => parkingBoy.setParkinglots('parkinglot')).should.throw();
+            (() => parkingBoy.setParkinglots(true)).should.throw();
+            (() => parkingBoy.setParkinglots(1.1)).should.throw();
+            (() => parkingBoy.setParkinglots([new Parkinglot(1), 1])).should.throw();
         });
         it('ParkingBoy should parking and pick up', () => {
             const parkingBoy = new ParkingBoy();
             const parkinglot = new Parkinglot(10);
+            const parkinglots = [parkinglot];
             const car1 = new Car();
             const car2 = new Car();
-            parkingBoy.setParkinglot(parkinglot);
+            parkingBoy.setParkinglots(parkinglots);
             parkingBoy.parking(car1).should.be.eq(true);
             parkingBoy.parking(car2).should.be.eq(true);
             parkingBoy.pickUp(car1).should.be.eq(true);
@@ -92,13 +96,13 @@ describe('oo-practice', () => {
         it('ParkingBoy should only parking and pick up car', () => {
             const parkingBoy = new ParkingBoy();
             const parkinglot = new Parkinglot(20);
-            parkingBoy.setParkinglot(parkinglot);
+            const parkinglots = [parkinglot]
+            parkingBoy.setParkinglots(parkinglots);
             (() => parkingBoy.parking(1)).should.throw();
             (() => parkingBoy.pickUp(1)).should.throw();
             (() => parkingBoy.parking('car')).should.throw();
             (() => parkingBoy.pickUp('car')).should.throw();
-            
-        })
+        });
 
     });
 });
