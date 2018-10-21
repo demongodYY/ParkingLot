@@ -118,6 +118,31 @@ describe('oo-practice', () => {
             parkinglot_A.available.should.be.eq(4);
             
         });
+        it('ParkingBoy should parking and most seat rate parkinglot', () => {
+            const parkingBoy = new ParkingBoy();
+            const parkinglot_A = new Parkinglot(2);
+            const parkinglot_B = new Parkinglot(5);
+            const parkinglots = [parkinglot_A, parkinglot_B];
+            const car1 = new Car();
+            const car2 = new Car();
+            const car3 = new Car();
+            const car4 = new Car();
+            const car5 = new Car();
+            const car6 = new Car();
+            parkingBoy.setParkinglots(parkinglots);
+            parkingBoy.parkingByRate(car1).should.be.eq(true);
+            parkinglot_A.available.should.be.eq(1);
+            parkingBoy.parkingByRate(car2).should.be.eq(true);
+            parkinglot_B.available.should.be.eq(4);
+            parkingBoy.parkingByRate(car3).should.be.eq(true);
+            parkingBoy.parkingByRate(car4).should.be.eq(true);
+            parkinglot_B.available.should.be.eq(2);
+            parkingBoy.parkingByRate(car5).should.be.eq(true);
+            parkinglot_A.available.should.be.eq(0);
+            parkingBoy.parkingByRate(car6).should.be.eq(true);
+            parkinglot_B.available.should.be.eq(1);
+            
+        });
 
     });
 });
