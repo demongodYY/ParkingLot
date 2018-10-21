@@ -82,8 +82,9 @@ describe('oo-practice', () => {
         });
         it('ParkingBoy should parking and pick up', () => {
             const parkingBoy = new ParkingBoy();
-            const parkinglot = new Parkinglot(10);
-            const parkinglots = [parkinglot];
+            const parkinglot_A = new Parkinglot(2);
+            const parkinglot_B = new Parkinglot(2);
+            const parkinglots = [parkinglot_A, parkinglot_B];
             const car1 = new Car();
             const car2 = new Car();
             parkingBoy.setParkinglots(parkinglots);
